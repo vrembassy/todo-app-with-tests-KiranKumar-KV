@@ -8,12 +8,12 @@ describe("ItemsView Test Cases", function(){
 	var $div,$checkbox,$delButton,$outdiv;
 
 	beforeEach(function(){
-		items = new Todo.ItemsView(todo);
-		app =new Todo.AppView(todo);
-		item = new Todo.ItemView(todo);
+		items = new Todo.dependencies.items(todo);
+		app = new Todo.dependencies.app(todo);
+		item = new Todo.dependencies.item(todo);
 		$div = document.createElement('DIV');
-		$checkbox=document.getElementById("buttonEat");
-		name =$checkbox.previousSibling;
+		$checkbox = document.getElementById("buttonEat");
+		name = $checkbox.previousSibling;
 	});
 	
 	describe("constructor", function(){
@@ -47,8 +47,8 @@ describe("ItemsView Test Cases", function(){
         });
 		it("removing the element",function(){
 			app.display("shishir");
-            $outdiv=document.getElementById("shishirdiv");
-			$delButton=document.getElementById("shishirdelete");
+            $outdiv = document.getElementById("shishirdiv");
+			$delButton = document.getElementById("shishirdelete");
 			$delButton.click();
 			expect($delButton.classList.contains('deletestyle')).to.be.true;
 			expect($outdiv.innerHTML).to.be.eql('');

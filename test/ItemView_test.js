@@ -8,10 +8,10 @@ var todo = {id: "1", name: "eat", state: "checked"};
 var $checkbox;
 
 	beforeEach(function(){
-		item = new Todo.ItemView(todo);
-		app = new Todo.AppView();
-		$checkbox=document.getElementById("buttonEat");
-		name =$checkbox.previousSibling;
+		item = new Todo.dependencies.item(todo);
+		app = new Todo.dependencies.app(todo);
+		$checkbox = document.getElementById("buttonEat");
+		name = $checkbox.previousSibling;
 	});
 
 	describe("constructor", function(){
