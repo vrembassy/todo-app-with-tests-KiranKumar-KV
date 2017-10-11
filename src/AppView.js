@@ -24,7 +24,7 @@ window.Todo.AppView =
 	
 		AppView.prototype.display = function(items){
 			Items.display(items);
-			//return items;				
+			return items;				
 		};
 		AppView.prototype.add = function(){
 			var itemText = document.querySelector("#todoTextBox");

@@ -3,8 +3,8 @@ window.Todo.Store =
 (function(window){
     // private methods
     //Store constructor
-		function Store() {
-            return this;
+		function Store(name) {
+            this.name = name;
 		}
     // Store public methods
         Store.prototype.init = function() {
@@ -19,6 +19,7 @@ window.Todo.Store =
 			toDoItems[idOfTheItem] = insertedItems;
 			console.log("Stored items summary :");
 			console.log(toDoItems);
+			return toDoItems;
 		};
 		
         Store.prototype.remove = function (id) {
