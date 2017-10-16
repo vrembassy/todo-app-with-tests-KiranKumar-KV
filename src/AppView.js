@@ -14,9 +14,9 @@ window.Todo.AppView =
             var ulElement = document.querySelector("#itemContainer");
 			var itemText = document.querySelector("#todoTextBox");
 			var clrbutton = document.querySelector("#clrButton");
-			itemText.addEventListener("keydown" ,this.add, false);       				//textbox eventlistener
-			clrbutton.addEventListener("click",Items.clearScreen);        				//clear screen button eventlistener
-			ulElement.addEventListener("click",Items.assignListeners);  				//checkbutton and deletebutton eventlistener
+			//itemText.addEventListener("keydown" ,this.add, false);       				//textbox eventlistener
+			//clrbutton.addEventListener("click",Items.clearScreen);        				//clear screen button eventlistener
+			//ulElement.addEventListener("click",Items.assignListeners);  				//checkbutton and deletebutton eventlistener
 			//var items = store.init();
 			Items.init();																//init (AppView-->ItemsView)
 			this.display(this.name);

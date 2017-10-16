@@ -1,27 +1,28 @@
 window.Todo = window.Todo || {};        
-window.Todo.ItemsView=
+window.Todo.ItemsView =
 (function(window){
     // private methods
     //ItemsView constructor
 		function ItemsView(name) {
-			this.name=name;
+			this.name = name;
 		}	
+		
     // ItemsView public methods
 		ItemsView.prototype.init = function() {		
-			var Item=new Todo.ItemView();
+			var Item = new Todo.ItemView();
 			Item.init();   
 		};
  
         ItemsView.prototype.display = function (items) { 
-			var item1=document.querySelector("#todoTextBox");
+			var item1 = document.querySelector("#todoTextBox");
 			item1.value = null;
 			$div = document.createElement('DIV');
 			$div.id = items+"div";
 			var divid = $div.id;
 			var stat = "unchecked";
-			var Item=new Todo.ItemView();
+			var Item = new Todo.ItemView();
 			$div.innerHTML = Item.display(items,divid);
-			var ul=document.querySelector("#itemContainer");
+			var ul = document.querySelector("#itemContainer");
 			ul.appendChild($div);
 			console.log("new TODO item added");
 			var insertedItems = {id : divid, name : items, state : stat};
@@ -48,11 +49,13 @@ window.Todo.ItemsView=
 				store.remove(outerDivId);														//delete (ItemsView-->Store)
 				}
 		};
+		
 		ItemsView.prototype.remove = function (outerDivId) {
 			var Item = new Todo.ItemView();
 			Item.remove(outerDivId);
 			return outerDivId;	
 		};
+		
 		ItemsView.prototype.clearScreen = function(){
 			var clrbutton = document.querySelector("#clrButton");
 			var Item = new Todo.ItemView();
