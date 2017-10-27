@@ -23,7 +23,7 @@ describe("AppView Test Cases", function(){
 		it("should be constructor", function() {
 			this.timeout(10000);
 			expect(app).to.be.an.instanceOf(Todo.AppView);
-			expect(app.todo).to.be.deep.equal(todo);
+			expect(app.todoArray).to.be.deep.equal(todo);
 		});
 	});
 	

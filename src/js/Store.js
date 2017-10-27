@@ -10,18 +10,20 @@ window.Todo.Store =
 		}
    
 		Store.prototype.writeone = function() {
-			var count=localStorage.length;
-			count++;
-			var itemid = "todo"+count;
-			var itemname = this.itemTodo;
+			//var count=localStorage.length;
+			//count++;
+			//var itemid = "todo"+count;
+			var itemid = this.itemTodo.id;
+			//var itemname = this.itemTodo;
+			var itemname= this.itemTodo.name;
 			var stat = "unchecked";
 		    window.localStorage.setItem(itemid,JSON.stringify({id:itemid,name:itemname,state:stat}));
 		}
 		
 		Store.prototype.readone = function() {
-			var itemid = localStorage.length;
-			itemid;
 			
+			//var itemid = localStorage.length;
+			var itemid = localStorage.length-1;
 			var newitem = JSON.parse(window.localStorage.getItem("todo"+itemid));
 			console.log(newitem);
 			return newitem;

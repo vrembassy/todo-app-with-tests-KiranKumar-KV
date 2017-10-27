@@ -17,7 +17,7 @@ var todo = {id: "1", name: "eat", state: "unchecked"};
 		it("should be constructor", function() {
 			this.timeout(10000);
 			expect(items).to.be.an.instanceOf(Todo.ItemsView);
-			expect(items.todo).to.be.deep.equal(todo);
+			expect(items.todoArray).to.be.deep.equal(todo);
 		});
 	});
 	

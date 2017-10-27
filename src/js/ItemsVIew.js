@@ -12,7 +12,7 @@ window.Todo.ItemsView =
 				//alert(this.todoArray.id);
 			this.item = new Todo.ItemView(this.todoArray);
 			this.itemsTodo = new Todo.ItemView(this.todoArray);
-			//this.$div = $createElDiv ("div");
+			this.$div = $createElDiv ("div");
 			//this.$div.id = "div" +this.todoArray.id;
 			//$div.id = items+"div";
 			return this;
@@ -23,9 +23,9 @@ window.Todo.ItemsView =
 			var items = this.todoArray;
 			var div = document.createElement("DIV");
 			div.id="div"+items.id;
-			div.innerHTML = this.item.display();
-			var $ul = document.querySelector("#itemContainer");
-			$ul.appendChild(div);
+			this.$div.innerHTML = this.item.display();
+			//var $ul = document.querySelector("#itemContainer");
+			//$ul.appendChild(div);
 			console.log("new TODO item added");
 			console.log(items);
 			return this;
@@ -64,11 +64,14 @@ window.Todo.ItemsView =
 		
 		ItemsView.prototype.remove = function (id,itemid) {
 			//alert("hi");
-			var item = new Todo.ItemView(this.todoArray);
+			//var item = new Todo.ItemView(this.todoArray);
 			this.item.remove(id,itemid);
-				
-				
+			$removeEl(this.$div);
+			this.$div=null;
+			return this;	
 		}
+				
+		
 		
 		ItemsView.prototype.clearScreen = function(){
 			//alert(this.todoArray);
