@@ -13,10 +13,7 @@
 	window.$createEl = function (tagName) {
     	return document.createElement("li");
   	}
-	window.$createElDiv = function (tagName) {
-    	return document.createElement("div");
-  	}
-
+	
 	window.$removeEl = function($el) {
 		var parent = $el.parentNode;
 		if (parent) parent.removeChild($el);

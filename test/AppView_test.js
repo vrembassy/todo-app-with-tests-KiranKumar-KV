@@ -1,34 +1,34 @@
 var expect = chai.expect;
 
-describe("AppView Test Cases", function(){
+describe("App View Test Cases", function(){
 	"use strict";
+	var app,items;
+	var $itemText,$clrbutton;
+	var div;
+	before(function(){
+		this.$itemText = document.createElement("input"); 
 
-	var items,item,app;
-	var todo = {id: "1", name: "eat", state: "unchecked"};
-	var $ul,$checkbox,$delButton,$itemBox;
-
-	beforeEach(function(){
-		$itemBox= document.getElementById("todoTextBox");
-		app = new Todo.AppView(todo);
-		items = new Todo.ItemsView(todo);
-		item = new Todo.ItemView(todo);
-		$ul = document.createElement("ul");
-		$itemBox = document.createElement("input"); 
-		$itemBox.type = "text";
-		$itemBox.id = "textBoxId"
-		//$div = document.createElement('DIV');
+		this.$itemText.type = "text";
+		this.$itemText.id = "todoTextBox";
+		this.$clrbutton = document.createElement("input"); 
+		this.$clrbutton.type = "button";
+		this.$clrbutton.id = "clrButton";
+		this.$clrbutton.className = "button";
+		this.div = document.querySelector("#fixtures");
+		this.div.append(this.$itemText);
+		this.div.append(this.$clrbutton);
+		app = new Todo.AppView();
 	});
 	
 	describe("constructor", function(){
-		it("should be constructor", function() {
-			this.timeout(10000);
+		it("should be constructor", function(){
 			expect(app).to.be.an.instanceOf(Todo.AppView);
-			expect(app.todoArray).to.be.deep.equal(todo);
 		});
 	});
 	
 	describe("display", function(){
 		it("should return the html content", function() {
+			
 			expect(app.display()).to.be.an.instanceOf(Object);
 		});
 	});
@@ -36,15 +36,17 @@ describe("AppView Test Cases", function(){
 	describe("add", function(){
 		
 		it("Event should fire on pressing enter button",function(){
-			$ul.appendChild($itemBox);
+			
 			var eventObj = document.createEvent("Events");
 			eventObj.initEvent("keydown", true, true);
-			$itemBox.value = "impl";
+			this.$itemText.value = "impl";
+			
 			eventObj.keyCode = 13;
-			$itemBox.dispatchEvent(eventObj);
-			expect($ul.querySelector("#textBoxId")).to.exist;
+			this.$itemText.dispatchEvent(eventObj);
+			expect(this.div.querySelector("#todoTextBox")).to.exist;
+			window.localStorage.removeItem("todo"+localStorage.length);
 			
 		});
-	
-});
+	 
+}); 
 });

@@ -1,40 +1,33 @@
 var expect = chai.expect;
 
-describe("ItemsView Test Cases", function(){
-"use strict";
-
-	var items,name,app,item;
-var todo = {id: "1", name: "eat", state: "unchecked"};
-	var $ul,$checkbox,$delButton,$outdiv;
-
+describe("Items View Test Cases", function(){
+	"use strict";
+	var items;
+	var $el;
+	var todo =[{id: "todo11", name: "buy books", state: "unchecked"},
+			   {id: "todo12", name: "buy bag", state: "unchecked"},
+			   {id: "todo13", name: "buy milk", state: "unchecked"}];
+	
 	beforeEach(function(){
 		items = new Todo.ItemsView(todo);
-		$ul = document.createElement("ul");
+		this.$el = document.createElement("ul");
+		this.$el.id = "itemContainer";
+		var div = document.querySelector("#fixtures");
+		div.append(this.$el);
 		
-	});
+		});
 	
 	describe("constructor", function(){
-		it("should be constructor", function() {
-			this.timeout(10000);
+		it("should be constructor", function(){
 			expect(items).to.be.an.instanceOf(Todo.ItemsView);
-			expect(items.todoArray).to.be.deep.equal(todo);
+			expect(items.todoArray).to.be.an.instanceOf(Object);
 		});
 	});
 	
 	describe("display", function(){
 		it("should return the html content", function() {
-			expect(items.display().$div).to.be.a.instanceOf(Element);
+			
+			expect(items.display()).to.be.an.instanceOf(Object);
 		});
 	});
-	
-	describe("remove", function(){
-        it("should delete the element", function() {
-			this.timeout(10000);
-           
-            $ul.append(items.display().$div);
-			
-			expect(items.remove().$div).to.be.null;
-        });
-    });
-	
 });
