@@ -9,7 +9,7 @@ window.Todo.Store =
 	Store.prototype.readMany = function(){
 		var arr = [];
 		var index = 0;
-		window.localStorage.setItem('todo1', JSON.stringify({id:'todo1',name:'buy milk',state:'unchecked'}));
+		Save.read();
 		for(var key in localStorage){
 			var storeditems = JSON.parse(window.localStorage.getItem(key));
 			arr[index++]= storeditems;
@@ -33,6 +33,10 @@ window.Todo.Store =
 		
 		window.localStorage.removeItem(Id);
 		
+	}
+	
+	Store.prototype.readOne = function(id){
+		return window.localStorage.getItem(id);
 	}
 	return Store;
 })();

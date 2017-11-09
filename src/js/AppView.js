@@ -20,8 +20,8 @@ window.Todo.AppView =
 		var ulElement = document.querySelector("#itemContainer");
 		ulElement.addEventListener("click",this.items.assignListeners);
 		ulElement.addEventListener("checked",function(e){alert(e.target.id)});
-		document.body.addEventListener("checked",this.doSomeShit,false);
-		document.body.addEventListener("unchecked",this.doSomeShit,false);
+		document.body.addEventListener("checked",this.doSomeWork,false);
+		document.body.addEventListener("unchecked",this.doSomeWork,false);
 		document.body.addEventListener("removed",this.remove_local,false);
 				
 		return this;
@@ -35,6 +35,7 @@ window.Todo.AppView =
 	AppView.prototype.remove_local = function(e){
 		var store = new Todo.Store();
 		store.removed_local(e.detail.id);
+		Save.remove(e.detail.id);
 	}
 	
 	AppView.prototype.add = function(){
@@ -54,14 +55,23 @@ window.Todo.AppView =
 				this.items.add(newItem);
 				var store = new Todo.Store();
 				store.writeOne(newItem);
+				Save.add(newItem);
 				itemText.value = null;
 			}
 		}		
 	}
 	
-	AppView.prototype.doSomeShit = function(e){
+	AppView.prototype.doSomeWork = function(e){
 		var id = e.detail.id.substring(5);
 		var store = new Todo.Store();
+		var items = JSON.parse(store.readOne(id));
+		if(items.state == "checked"){
+			items.state = "unchecked";
+		}
+		else{
+			items.state = "checked";
+		}
+		Save.update(items);
 		store.setStatus(id,e.detail.state);
 		console.log(id);
 	}

@@ -23,7 +23,7 @@ window.Todo.ItemsView =
 			var item = new Todo.ItemView(todoItem);
 			var html = item.display().$el;
 			$el.appendChild(html);
-		});
+		})
 		console.log("todo items added");		
 		return this;
 	}
@@ -37,8 +37,8 @@ window.Todo.ItemsView =
 	}
 	
 	ItemsView.prototype.remove = function (id) {
-		$todoItem.remove(id);
-					
+		alert(id);
+		$todoItem.remove(id);				
 	}
 	
 	ItemsView.prototype.assignListeners = function(){
